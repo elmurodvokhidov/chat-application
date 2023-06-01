@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
+import { ImTelegram } from "react-icons/im";
+import { BiHide, BiShow } from "react-icons/bi";
 
 function LoginForm(props) {
     const [username, setUsername] = useState('');
@@ -26,13 +28,13 @@ function LoginForm(props) {
     return (
         <div className="wrapper">
             <div className="form">
-                <div className="logo"><i className="fa-brands fa-telegram"></i></div>
+                <div className="logo"><ImTelegram /></div>
                 <h1 className="title">Chat Application</h1>
                 <form onSubmit={handleSubmit}>
                     <input className="input" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
                     <div className="inputGroup">
                         <input className="input" type={isPass ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                        <span onClick={() => setIsPass(!isPass)} className="showPass">{isPass ? <i className="fa-sharp fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</span>
+                        <span onClick={() => setIsPass(!isPass)} className="showPass">{isPass ? <BiHide /> : <BiShow />}</span>
                     </div>
                     <div align="center">
                         <button type="submit" className="button">

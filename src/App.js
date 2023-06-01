@@ -3,6 +3,7 @@ import './App.css';
 import ChatFeed from "./components/ChatFeed";
 import LoginForm from "./components/LoginForm";
 import Logout from "./components/Logout";
+import ChatAppState from "./components/ChatAppState";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       userSecret={localStorage.getItem('password')}
       renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
       renderOptionsSettings={(creds, chat) => <Logout {...creds} />}
+      renderChatSettings={(chatAppState) => <ChatAppState {...chatAppState} />}
     />
   )
 };

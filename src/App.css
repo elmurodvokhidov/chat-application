@@ -271,6 +271,7 @@
   color: #595959;
   cursor: pointer;
   user-select: none;
+  font-size: 18px;
 }
 
 .form {
@@ -346,11 +347,27 @@
 
 .logout {
   width: 100%;
-  border: none;
-  padding: .7rem 0;
+  /* border: none; */
+  /* padding: .7rem 1rem; */
   font-size: 18px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   cursor: pointer;
+  text-align: left;
   user-select: none;
   background-color: #8774E1;
+}
+
+.cardLeft {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.cardLeft img {
+  width: 100%;
+}
+
+.cardRight {
+  display: flex;
+  gap: 10px;
 }
