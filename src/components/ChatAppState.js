@@ -16,8 +16,6 @@ function ChatAppState(props) {
     const chat = chats && chats[activeChat];
     const person = chat?.people;
 
-    console.log(person);
-
     return (
         <div className="chatAppState p-1 d-flex flex-column gap-2">
             {/* All group members */}
@@ -31,12 +29,12 @@ function ChatAppState(props) {
                         person?.map((val, ind) => (
                             <div className="card-body d-flex p-3 justify-content-between" key={ind}>
                                 <div className="cardRight">
-                                <div className="cardLeft">
-                                    <img src={val.person.avatar} alt={val.person.username} />
-                                </div>
+                                    <div className="cardLeft">
+                                        <img src={val.person.avatar} alt={val.person.username} />
+                                    </div>
                                     <p>{val.person.first_name} {val.person.last_name}</p>
                                 </div>
-                                <div className="isOnline">{val.person.is_online ? <span style={{color: 'green'}}><RiRadioButtonLine /></span> : <span style={{color: 'red'}}><RiRadioButtonLine /></span>}</div>
+                                <div className="isOnline">{val.person.is_online ? <span style={{ color: 'green' }}><RiRadioButtonLine /></span> : <span style={{ color: 'red' }}><RiRadioButtonLine /></span>}</div>
                             </div>
                         ))
                     }
@@ -50,8 +48,13 @@ function ChatAppState(props) {
                     {foo.foo2 ? <span><IoIosArrowUp /></span> : <span><IoIosArrowDown /></span>}
                 </button>
                 <div className="collapse" id="collapseExample1">
-                    <div className="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    <div className="card-body d-flex p-3 justify-content-between flex-wrap gap-3">
+                        {
+                            chat?.attachments
+                                .map((itm, ind) => (
+                                    <div className="imgContainer" key={ind}><img src={itm.file} alt={itm.created} /></div>
+                                ))
+                        }
                     </div>
                 </div>
             </div>

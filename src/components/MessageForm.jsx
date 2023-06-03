@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { sendMessage, isTyping } from 'react-chat-engine';
-import { SendOutlined, PictureOutlined } from '@ant-design/icons';
+// import { SendOutlined, PictureOutlined } from '@ant-design/icons';
+import { IoSend } from "react-icons/io5";
+import { ImAttachment } from "react-icons/im";
 
 function MessageForm(props) {
     const [value, setValue] = useState('');
@@ -33,7 +35,7 @@ function MessageForm(props) {
             />
             <label htmlFor="upload-button">
                 <span className="image-button">
-                    <PictureOutlined className="picture-icon" />
+                    <ImAttachment className="picture-icon" />
                 </span>
             </label>
             <input type="file"
@@ -42,7 +44,7 @@ function MessageForm(props) {
                 style={{ display: 'none' }}
                 onChange={handleUpload} />
             <button type="submit" className="send-button">
-                <SendOutlined className="send-icon" />
+                <IoSend className="send-icon" />
             </button>
         </form>
     );

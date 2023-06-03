@@ -1,10 +1,14 @@
+import { useState } from "react";
 import MessageForm from "./MessageForm";
 import MyMessage from "./MyMessage";
 import TheirMessage from "./TheirMessage";
+import { RxHamburgerMenu } from "react-icons/rx";
+import Modal from "./Modal";
 
 function ChatFeed(props) {
     const { chats, activeChat, userName, messages } = props;
     const chat = chats && chats[activeChat];
+    const [foo, setFoo] = useState(false);
 
     const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
         <div
@@ -44,7 +48,13 @@ function ChatFeed(props) {
 
     return (
         <div className="chat-feed">
+            {
+                foo ?
+                    <Modal foo={foo} setFoo={setFoo} />
+                    : null
+            }
             <div className="chat-title-container">
+                <button onClick={() => setFoo(!foo)} className="btn btn-light" id="menu"><RxHamburgerMenu /></button>
                 <div className="chat-title">{chat?.title}</div>
                 <div className="chat-subtitle">
                     {chat.people.map((person) => <p key={person.person.username}>{person.person.username}</p>)}
