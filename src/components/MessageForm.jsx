@@ -4,7 +4,7 @@ import { sendMessage, isTyping } from 'react-chat-engine';
 import { IoSend } from "react-icons/io5";
 import { ImAttachment } from "react-icons/im";
 
-function MessageForm(props) {
+function MessageForm({ colorState }, props) {
     const [value, setValue] = useState('');
     const { chatId, creds } = props;
 
@@ -35,7 +35,7 @@ function MessageForm(props) {
             />
             <label htmlFor="upload-button">
                 <span className="image-button">
-                    <ImAttachment className="picture-icon" />
+                    <ImAttachment className="picture-icon" id={colorState.color1 === 'true' ? 'colorid1color' : colorState.color2 === 'true' ? 'colorid2color' : colorState.color3 === 'true' ? 'colorid3color' : colorState.color4 === 'true' ? 'colorid4color' : null} />
                 </span>
             </label>
             <input type="file"
@@ -43,7 +43,7 @@ function MessageForm(props) {
                 id="upload-button"
                 style={{ display: 'none' }}
                 onChange={handleUpload} />
-            <button type="submit" className="send-button">
+            <button type="submit" className="send-button" id={colorState.color1 === 'true' ? 'colorid1color' : colorState.color2 === 'true' ? 'colorid2color' : colorState.color3 === 'true' ? 'colorid3color' : colorState.color4 === 'true' ? 'colorid4color' : null}>
                 <IoSend className="send-icon" />
             </button>
         </form>

@@ -1,5 +1,5 @@
 
-function MyMessage({ message }) {
+function MyMessage({ message, colorState }) {
     if (message.attachments && message.attachments.length > 0) {
         return (
             <img
@@ -12,7 +12,7 @@ function MyMessage({ message }) {
     }
 
     return (
-        <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: '#8774E1' }}>
+        <div className="message" style={{ backgroundColor: colorState.color1 === 'true' ? '#8774E1' : colorState.color2 === 'true' ? '#0D6EFD' : colorState.color3 === 'true' ? '#C06C84' : colorState.color4 === 'true' ? 'black' : 'null', float: 'right', marginRight: '18px', color: 'white', }}>
             {message.text}
         </div>
     );

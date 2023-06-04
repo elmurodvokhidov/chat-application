@@ -8,9 +8,6 @@ function ChatAppState(props) {
     const [foo, setFoo] = useState({
         foo1: false,
         foo2: false,
-        foo3: false,
-        foo4: false,
-        foo5: false,
     });
     const { chats, activeChat, } = props;
     const chat = chats && chats[activeChat];

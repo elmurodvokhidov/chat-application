@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 
 function Logout(props) {
 
+    const colorState = props;
+
     const handlerLogout = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -23,7 +25,7 @@ function Logout(props) {
 
     return (
         <div>
-            <button style={{ backgroundColor: '#8774E1', width: '100%', fontSize: '17px', }} className="btn d-flex justify-content-between t-align-left" type="submit" onClick={handlerLogout}><span>Logout</span> <span><FiLogOut /></span></button>
+            <button style={{ backgroundColor: colorState.color1 === 'true' ? '#8774E1' : colorState.color2 === 'true' ? '#0D6EFD' : colorState.color3 === 'true' ? '#C06C84' : colorState.color4 === 'true' ? 'black' : 'null', width: '100%', fontSize: '17px', }} className="btn d-flex justify-content-between t-align-left" type="submit" onClick={handlerLogout}><span>Logout</span> <span><FiLogOut /></span></button>
         </div>
     );
 }

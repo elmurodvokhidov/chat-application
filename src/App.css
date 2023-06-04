@@ -421,7 +421,7 @@
   height: 100vh;
   position: absolute;
   z-index: 15;
-  background-color: #333;
+  background-color: white;
 }
 
 #menu {
@@ -429,6 +429,22 @@
   position: absolute;
   top: 20px;
   left: 15px;
+}
+
+#colorid1color {
+  color: #8774E1;
+}
+
+#colorid2color {
+  color: #0D6EFD;
+}
+
+#colorid3color {
+  color: #C06C84;
+}
+
+#colorid4color {
+  color: black;
 }
 
 /* Media Queries */
@@ -442,14 +458,30 @@
     background-color: #8774E1;
   }
 
+  #colorid1 {
+    background-color: #8774E1 !important;
+  }
+
+  #colorid2 {
+    background-color: #0D6EFD !important;
+  }
+
+  #colorid3 {
+    background-color: #C06C84 !important;
+  }
+
+  #colorid4 {
+    background-color: black !important;
+  }
+
   .chat-title {
-    color: white;
+    color: white !important;
     font-weight: 800;
     font-size: 28px;
   }
 
   .chat-subtitle {
-    color: white;
+    color: white !important;
     font-weight: 600;
     font-size: 12px;
     padding-top: 4px;

@@ -6,9 +6,15 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Modal from "./Modal";
 
 function ChatFeed(props) {
-    const { chats, activeChat, userName, messages } = props;
+    const { chats, activeChat, userName, messages, colorState, setColorState, refresh, colorArray } = props;
     const chat = chats && chats[activeChat];
-    const [foo, setFoo] = useState(false);
+    const [mobileModal, setMobileModal] = useState({
+        modal1: false,
+        modal2: false,
+        modal3: false,
+        modal4: false,
+        modal5: false,
+    });
 
     const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
         <div
@@ -33,7 +39,7 @@ function ChatFeed(props) {
                 <div key={`msg_${index}`} style={{ width: '100%' }}>
                     <div className="message-block">
                         {isMyMessage
-                            ? <MyMessage message={message} />
+                            ? <MyMessage message={message} colorState={colorState} />
                             : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />}
                     </div>
                     <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
@@ -49,21 +55,29 @@ function ChatFeed(props) {
     return (
         <div className="chat-feed">
             {
-                foo ?
-                    <Modal foo={foo} setFoo={setFoo} />
+                mobileModal.modal1 ?
+                    <Modal
+                        mobileModal={mobileModal}
+                        setMobileModal={setMobileModal}
+                        chat={chat}
+                        colorState={colorState}
+                        setColorState={setColorState}
+                        refresh={refresh}
+                        colorArray={colorArray}
+                    />
                     : null
             }
-            <div className="chat-title-container">
-                <button onClick={() => setFoo(!foo)} className="btn btn-light" id="menu"><RxHamburgerMenu /></button>
-                <div className="chat-title">{chat?.title}</div>
-                <div className="chat-subtitle">
+            <div className="chat-title-container" id={colorState.color1 === 'true' ? 'colorid1' : colorState.color2 === 'true' ? 'colorid2' : colorState.color3 === 'true' ? 'colorid3' : colorState.color4 === 'true' ? 'colorid4' : null}>
+                <button onClick={() => setMobileModal({ ...mobileModal, modal1: !mobileModal.modal1 })} className="btn btn-light" id="menu"><RxHamburgerMenu /></button>
+                <div className="chat-title" id={colorState.color1 === 'true' ? 'colorid1color' : colorState.color2 === 'true' ? 'colorid2color' : colorState.color3 === 'true' ? 'colorid3color' : colorState.color4 === 'true' ? 'colorid4color' : null}>{chat?.title}</div>
+                <div className="chat-subtitle" id={colorState.color1 === 'true' ? 'colorid1color' : colorState.color2 === 'true' ? 'colorid2color' : colorState.color3 === 'true' ? 'colorid3color' : colorState.color4 === 'true' ? 'colorid4color' : null}>
                     {chat.people.map((person) => <p key={person.person.username}>{person.person.username}</p>)}
                 </div>
             </div>
             {renderMessages()}
             <div style={{ height: '100px' }} />
             <div className="message-form-container">
-                <MessageForm {...props} chatId={activeChat} />
+                <MessageForm {...props} chatId={activeChat} colorState={colorState} />
             </div>
         </div>
     );
